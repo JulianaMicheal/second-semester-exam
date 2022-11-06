@@ -1,6 +1,6 @@
 const Blog = require("../models/blogModel");
 //const Blog = require('../models/blog')
-const { readingTime } = require('../ReadingTime/readingTime')
+const { readingTime } = require('../helpers/utils')
 
 exports.createBlog = async (req,res,next) =>{
   try{
