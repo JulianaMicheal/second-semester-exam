@@ -1,7 +1,10 @@
+require("express-async-errors");
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
+//routing
 const userRoute = require('./routes/userRoute');
 const blogRoute = require('./routes/blogRoute');
 
@@ -9,20 +12,21 @@ const blogRoute = require('./routes/blogRoute');
 require('./db/db').connectToMongoDB() 
 require('dotenv').config()
 
+// middlewares
 require("./authentication/auth") //signup and login middlewear
+const errorHandler = require("./middleware/errorHandler");
 
 const PORT = 8000
 
 const app = express()
 app.use(express.json());
-//app.use('/user', userRoute)
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
  app.use('/user', userRoute)
  app.use('/blog', blogRoute)
- app.use('users', passport.authenticate('jwt', { session: false }), blogRoute);
+ app.use(errorHandler);
+ app.use('user', passport.authenticate('jwt', { session: false }), blogRoute);
 
 
  app.get('/testing', function(req, res, next) {

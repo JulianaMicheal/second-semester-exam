@@ -23,13 +23,13 @@ passport.use(
             }
         }
     )
-)
+);
 
 passport.use(
     'signup',
     new localStrategy(
         {
-            usernameField : 'email',
+            usernameField : 'username',
             passwordField : 'password'
         },
         async (email ,password,done) =>{

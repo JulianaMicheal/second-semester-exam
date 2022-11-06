@@ -1,5 +1,4 @@
 const Blog = require("../models/blogModel");
-//const Blog = require('../models/blog')
 const { readingTime } = require('../helpers/utils')
 
 exports.createBlog = async (req,res,next) =>{
@@ -38,7 +37,7 @@ exports.getAllBlogs = async (req,res, next)=>{
     })
 
   }catch(err){
-    err.source = 'get publish blogs controller'
+    err.source = ' get publish blogs controller'
     next(err)
   }
 }
@@ -51,7 +50,7 @@ exports.getBlogById = async (req, res, next) => {
     if (blog.state !== 'published') {
       return res.status(403).json({
         status: false,
-        error: 'Requested article is not published  Or Blog is on default (draft)'
+        error: 'Blog is not published  Or Blog is on default (draft)'
       })
     }
 
@@ -104,53 +103,6 @@ exports.deleteBlog = async (req, res) => {
 
 
 
-// exports.getAllBlogs = async (req, res) => {
-//   try {
-//     const blogs = await blogModel.getAllBlogs();
-//     res.json({ data: blogs, status: "success" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-
- 
-// exports.getBlogById = async (req, res) => {
-//     try {
-//       const blog = await blogModel.getBlogById(req.params.id);
-//       res.json({ data: blog, status: "success" });
-//     } catch (err) {
-//       res.status(500).json({ error: err.message });
-//     }
-//   };
- 
-// exports.createBlog = async (req, res) => {
-//   try {
-//     const blog = await blogModel.createBlog(req.body);
-//     res.json({ data: blog, status: "success" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
- 
-// exports.updateBlog = async (req, res) => {
-//   try {
-//     const blog = await blogModel.updateBlog(req.params.id, req.body);
-//     res.json({ data: blog, status: "success" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
- 
-// exports.deleteBlog = async (req, res) => {
-//   try {
-//     const blog = await blogModel.deleteBlog(req.params.id);
-//     res.json({ data: blog, status: "success" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
 
 
 
