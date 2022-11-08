@@ -7,7 +7,6 @@ A blog API built with Node js
     - Sign Up
     - Confirm Email Address
     - Login 
-    - Logout
     - Stateful Jwt Authentication
 - ### Basic CRUD
     - Create Posts
